@@ -11,5 +11,15 @@
 
 	<h:outputText value="#{olaMundoMBean.mensagem}" />
 
+	
+	<h:form>
+		<h:outputText value="Nome:" />
+		<h:inputText value="#{olaMundoMBean.nome}" />
+		<h:commandButton value="enviar"  />
+	</h:form>
+	
+	
+	<h:outputText value="Ola: #{olaMundoMBean.nome}" rendered="#{not empty olaMundoMBean.nome}"/>
+
 </h:body>
 </html>

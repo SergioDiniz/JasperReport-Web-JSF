@@ -8,15 +8,17 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import br.com.beans.Funcionario;
+import br.com.interfaces.FuncionarioDAOIT;
 
-public class FuncionarioDAO {
+public class FuncionarioDAO implements FuncionarioDAOIT {
 
 	EntityManager em;
 	
 	public FuncionarioDAO(){
 		em = Persistence.createEntityManagerFactory("funcionarioPU").createEntityManager();
 	}
-	
+
+	@Override
 	public void addFuncionario(Funcionario funcionario){
 		try {
 			em.getTransaction().begin();
@@ -27,6 +29,7 @@ public class FuncionarioDAO {
 		}
 	}
 	
+	@Override
 	public List<Funcionario> listFuncionarios(){
 		List<Funcionario> funcionarios = new ArrayList<>();
 		
@@ -41,5 +44,6 @@ public class FuncionarioDAO {
 		
 		return funcionarios;
 	}
+	
 	
 }
