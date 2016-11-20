@@ -14,19 +14,40 @@
 
 
 	<h:form>
-		<h:outputText value="Nome:"></h:outputText>
-		<h:inputText value="#{funcionarioController.funcionario.nome}"></h:inputText>
-		<br />
-		<h:outputText value="Email:"></h:outputText>
-		<h:inputText value="#{funcionarioController.funcionario.email}"></h:inputText>
-		<br />
-		<h:commandButton value="Cadastrar!"
-			action="#{funcionarioController.addFuncionario()}"></h:commandButton>
+
+		<h:panelGrid columns="3" cellpadding="5">
+			<p:outputLabel value="Nome" for="campoNome"></p:outputLabel>
+			<p:inputText value="#{funcionarioController.funcionario.nome}"
+				required="true" id="campoNome">
+				<f:validateLength minimum="5"></f:validateLength>
+			</p:inputText>
+			<p:message for="campoNome"></p:message>
+
+			<p:outputLabel value="Email" for="campoEmail"></p:outputLabel>
+			<p:inputText value="#{funcionarioController.funcionario.email}"
+				required="true" id="campoEmail">
+				<f:validateLength minimum="5"></f:validateLength>
+			</p:inputText>
+			<p:message for="campoEmail"></p:message>
+
+
+			<p:commandButton ajax="false" update="table" value="Cadastrar!"
+				actionListener="#{funcionarioController.addFuncionario()}"
+				styleClass="ui-priority-primary">
+			</p:commandButton>
+			<p:commandButton ajax="false" update="table" value="Gerar PDF"
+				actionListener="#{funcionarioController.addFuncionario()}"
+				styleClass="ui-priority-danger">
+			</p:commandButton>
+
+		</h:panelGrid>
+
 	</h:form>
 
 
-
-	<p:dataTable var="f" value="#{funcionarioController.funcionarios}">
+	<br />
+	<p:dataTable var="f" value="#{funcionarioController.funcionarios}"
+		rows="10" paginator="true" id="table">
 		<p:column sortBy="#{f.nome}" headerText="Nome">
 			<h:outputText value="#{f.nome}"></h:outputText>
 		</p:column>
