@@ -39,6 +39,14 @@ public class FuncionarioController implements Serializable {
 		this.funcionarios = dao.listFuncionarios();
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	public Funcionario getFuncionario() {
 		return funcionario;
