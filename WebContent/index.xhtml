@@ -35,13 +35,17 @@
 				actionListener="#{funcionarioController.addFuncionario()}"
 				styleClass="ui-priority-primary">
 			</p:commandButton>
-			<p:commandButton ajax="false" update="table" value="Gerar PDF"
-				actionListener="#{funcionarioController.addFuncionario()}"
-				styleClass="ui-priority-danger">
-			</p:commandButton>
+
 
 		</h:panelGrid>
 
+	</h:form>
+
+	<h:form>
+		<p:commandButton ajax="false" value="Gerar PDF"
+			actionListener="#{funcionarioController.gerarPDF()}"
+			styleClass="ui-priority-danger">
+		</p:commandButton>
 	</h:form>
 
 
