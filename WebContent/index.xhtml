@@ -2,26 +2,46 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Inicio</title>
-</head>
-<body>
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Inicio</title>
+</h:head>
+<h:body>
 	<h1>Inicio</h1>
-	
-	
-	
+
+
+
 	<h:form>
 		<h:outputText value="Nome:"></h:outputText>
 		<h:inputText value="#{funcionarioController.funcionario.nome}"></h:inputText>
-		<br/>
+		<br />
 		<h:outputText value="Email:"></h:outputText>
 		<h:inputText value="#{funcionarioController.funcionario.email}"></h:inputText>
-		<br/>
-		<h:commandButton value="Cadastrar!" action="#{funcionarioController.addFuncionario()}"></h:commandButton>
-
+		<br />
+		<h:commandButton value="Cadastrar!"
+			action="#{funcionarioController.addFuncionario()}"></h:commandButton>
 	</h:form>
-	
-</body>
+
+
+
+	<p:dataTable var="f" value="#{funcionarioController.funcionarios}">
+		<p:column sortBy="#{f.nome}" headerText="Nome">
+			<h:outputText value="#{f.nome}"></h:outputText>
+		</p:column>
+		<p:column sortBy="#{f.email}" headerText="Email">
+			<h:outputText value="#{f.email}"></h:outputText>
+		</p:column>
+		<p:column sortBy="${f.nascimento}" headerText="Nascimento">
+			<h:outputText value="#{f.nascimento}">
+				<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+			</h:outputText>
+		</p:column>
+	</p:dataTable>
+
+
+
+
+</h:body>
 </html>
